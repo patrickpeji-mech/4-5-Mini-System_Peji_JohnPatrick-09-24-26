@@ -1,0 +1,116 @@
+#SECTION 4: GENERAL PURPOSE MATH FUNCTION
+def general_menu():
+    print header("GENERAL MATH FUNCTION")
+    print("""
+    1. Compute cell, floor, and trunc of a value
+    2. Compute a factorial
+    3. Compute the hypotenuse of a right triangle
+    0. Back to Main Menu
+    """)
+    choice = safe_input("Enter your choice: "). strip()
+
+    if choice ==  "1":
+        x = get_float("Enter a decimal number x: ")
+        print(f"\n cell{(x)} = {math.cell(x)}")
+        print(f"\n cell{(x)} = {math.floor(x)}")
+        print(f"\n cell{(x)} = {math.trunc(x)}")
+
+    elif choice == "2":
+        n = get_int("Enter a non-negative whole number: ")
+        try:
+            print(f"\n {n}! = {math.factorial(n)}")
+        except ValueError:
+            print(" factorial() requires a non-negative interger.")
+
+        elif choice == "3":
+            x = get_float("Enter the lenght of leg: x: ")
+            y = get_float("Enter the lenght of leg: y: ")
+            print(f"\n hypot({x}, {y}) = {math.hypot(x, y)})
+
+            print (f" (Same idea as sqrt({x}**2)))
+= *
+                f"{math.sqrt(x**2 + y**2)}, but hypot() is more precise.)")
+
+        elif choice == "0":
+            return
+        else:
+            print("\nInvalid choice.")
+
+        pause()
+
+#Selection 5: THE RANDOM MODULE
+def random_menu():
+    print_header("THE RANDOM MODULE")
+    print("""
+
+    1. Set a seed (so results can be repeated)
+    2. Generate a number with randrage()
+    3. Generate a number with randint()
+    4. Pick a random item from a list with choice()
+    5. Draw several UNIQUE items from a list with sample() (like a lottery)
+    0. Back to Main Menu
+
+""")
+    choice = safe_input("Enter your choice: ").strip()
+
+    if choice =="1":
+        pick = safe_input("Type 'time' to seed with
+current time, or type an "
+                            "integer seed manually:
+").strip()
+        if pick.lower() == "time":
+            random.seed()
+            print("\nSeed set using the current time.
+Every run will now "
+                    "differ.")
+        else:
+            try:
+                random.seed(int(pick))
+                print(f"\nSeed set to {input(Pick)}. the
+random sequence "
+                    f"produced from now on is repeatable.")
+            except ValueError:
+                print("Choose a form: 1") randrange(end) 2)
+randrange(beg, end)"
+                    " 3) randrange(beg, end, step)")
+                form = safe_input ("Form (1/2/3): "). strip()
+                if form == "1":
+                    end = get_int("Enter end: ")
+                    print(f"\nrandom.randrange({end}) =
+                    {random.randrange(end)}")
+                elif form == "2":
+                    beg = get_int("Enter beg: ")
+                    end = get_int("Enter end: ")
+                    print(f"\nrandom.randrange({beg}, {end}) =
+                    "
+                          f"{random.randrange(beg, end)}")
+                elif form == "3":
+                    beg = get_int("Enter beg: ")
+                    end = get_int("Enter end: ")
+                    step = get_int("Enter step: ")
+                    print(f"\nrandom.randrange({beg}, {end}, {step}) = "
+                          f"{random.randrange(beg, end, step)}")
+                else: 
+                    print("\nInvalid form. ")
+                
+                elif choice == "3":
+                    left = get_int("Enter the left (lowest) bound: ")
+                    right = get_int("Enter the right (highest) bound: ")
+                    try:
+                        print(f\nrandom.randit({left}, {right}) = "
+                              f"random.randint(left, right)}")
+                        print("(Both end points are possible outcomes.)")
+                    except ValueError:
+                        print("\nleft must be <= right. ")
+                    elif choice == "4":
+                        raw = safe_input("Enter items seperated by commas (e.g., apple, banana, cherry):")
+                        if items:
+                            print(f\nYour lis: (items)")
+                            print(f"random.choice(list) picked: {random.choice(items)}")
+                        else:
+                            print("\nYou didn't enter any items.")
+                        elif choice == "5":
+                            raw = safe_input("Enter items seperated by commas (e.g., 1,2,3,4,5,6,7,8,9,10 or names for a lottery): ")
+                            items = [item.strip() for item in raw.split(",") if item.strip()]
+                            if not items:
+                            
